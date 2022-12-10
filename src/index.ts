@@ -1,7 +1,7 @@
 import recommended from "./configs/recommended"
 import rules from "./rules"
 
-export default {
+module.exports = {
   rules,
   configs: {
     recommended
