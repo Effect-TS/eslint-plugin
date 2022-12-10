@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@effect/eslint-plugin": ["./build/esm/index.js"],
+      "@effect/eslint-plugin/*": ["./build/esm/*"]
+    }
+  },
+  "include": ["./build/esm/**/*.js"]
+}
