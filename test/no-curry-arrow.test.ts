@@ -11,9 +11,38 @@ ruleTester.run("no-curry-arrow", rule, {
       T.succeed("Hello"),
       T.tap(T.log)
     )   
+    `,
+    `
+    import * as T from "@effect/io/Effect"
+    import { pipe } from "@fp-ts/data/Function"
+    
+    const test = pipe(
+      T.succeed("Hello"),
+      T.tap((a, b, c) => T.log(a, b))
+    )
     `
   ],
   invalid: [{
+    code: `
+    import * as T from "@effect/io/Effect"
+    import { pipe } from "@fp-ts/data/Function"
+    
+    const test = pipe(
+      T.succeed("Hello"),
+      T.tap(() => T.unit())
+    )    
+    `,
+    errors: [{ line: 7, messageId: "noCurryArrow" }],
+    output: `
+    import * as T from "@effect/io/Effect"
+    import { pipe } from "@fp-ts/data/Function"
+    
+    const test = pipe(
+      T.succeed("Hello"),
+      T.tap(T.unit)
+    )    
+    `
+  }, {
     code: `
     import * as T from "@effect/io/Effect"
     import { pipe } from "@fp-ts/data/Function"
@@ -32,6 +61,26 @@ ruleTester.run("no-curry-arrow", rule, {
       T.succeed("Hello"),
       T.tap(T.log)
     )    
+    `
+  }, {
+    code: `
+    import * as T from "@effect/io/Effect"
+    import { pipe } from "@fp-ts/data/Function"
+    
+    const test = pipe(
+      T.succeed("Hello"),
+      T.tap((a, b, c) => T.log(a, b, c))
+    )
+    `,
+    errors: [{ line: 7, messageId: "noCurryArrow" }],
+    output: `
+    import * as T from "@effect/io/Effect"
+    import { pipe } from "@fp-ts/data/Function"
+    
+    const test = pipe(
+      T.succeed("Hello"),
+      T.tap(T.log)
+    )
     `
   }]
 })
