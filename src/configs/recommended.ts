@@ -4,7 +4,6 @@ export default {
   extends: [],
   rules: {
     ...disableConflictRules.rules,
-    "@effect/no-curry-arrow": "warn",
     "@effect/dprint": "error",
   },
 }

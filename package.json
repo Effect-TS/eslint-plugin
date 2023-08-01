@@ -54,8 +54,7 @@
   "dependencies": {
     "@dprint/formatter": "^0.2.0",
     "@dprint/typescript": "^0.85.1",
-    "diff": "^5.1.0",
-    "effect": "2.0.0-next.23"
+    "diff": "^5.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.9",

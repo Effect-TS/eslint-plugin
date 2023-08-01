@@ -4,9 +4,9 @@ import { ConfigSchema } from "@effect/eslint-plugin/Dprint"
 import type { Addition, Removal, Replacement } from "@effect/eslint-plugin/Diff"
 import { DiffIterator } from "@effect/eslint-plugin/DiffIterator"
 import * as RegularExpression from "@effect/eslint-plugin//RegularExpression"
-import { ESLintUtils } from "@typescript-eslint/utils"
 import * as Fs from "fs"
 import * as path from "path"
+import { createRule } from "@effect/eslint-plugin/utils/eslint"
 
 const formatter = createFromBuffer(Fs.readFileSync(getPath()))
 
@@ -122,12 +122,7 @@ function createMessage(diff: Addition | Removal | Replacement): Message {
   }
 }
 
-export const Rule = ESLintUtils.RuleCreator(
-  ruleName =>
-    `https://github.com/tsplus/eslint/blob/master/packages/eslint-plugin-dprint/_docs/rules/${ruleName}.md`,
-)
-
-export const dprint = Rule({
+export const dprint = createRule({
   name: "dprint",
   meta: {
     type: "layout",
