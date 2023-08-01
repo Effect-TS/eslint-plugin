@@ -71,7 +71,7 @@
     "@types/glob": "^8.1.0",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
-    "@types/prettier": "3.0.0",
+    "@types/prettier": "2",
     "@types/rimraf": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
