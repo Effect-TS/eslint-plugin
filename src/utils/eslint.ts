@@ -1,10 +1,10 @@
-/* eslint-disable @repo-tooling/dprint/dprint */
 import { ESLintUtils } from "@typescript-eslint/utils"
 
-const {getParserServices} = ESLintUtils
+const { getParserServices } = ESLintUtils
 
 const createRule = ESLintUtils.RuleCreator(
-  (name) => `https://github.com/Effect-TS/eslint-plugin/blob/main/src/rules/${name}.ts`
+  name =>
+    `https://github.com/Effect-TS/eslint-plugin/blob/main/src/rules/${name}.ts`,
 )
 
-export { getParserServices, createRule}
+export { getParserServices, createRule }

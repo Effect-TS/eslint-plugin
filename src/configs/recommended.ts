@@ -1,6 +1,9 @@
+import { disableConflictRules } from "@effect/eslint-plugin/configs/disable-conflict-rules"
+
 export default {
   extends: [],
   rules: {
-    "@effect/no-curry-arrow": "warn"
-  }
+    ...disableConflictRules.rules,
+    "@effect/dprint": "error",
+  },
 }

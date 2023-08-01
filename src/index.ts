@@ -1,9 +1,11 @@
+import { dprint } from "@effect/eslint-plugin/rules/dprint"
 import recommended from "./configs/recommended"
-import rules from "./rules"
 
-module.exports = {
-  rules,
+export default {
   configs: {
-    recommended
-  }
+    recommended,
+  },
+  rules: {
+    dprint,
+  },
 }

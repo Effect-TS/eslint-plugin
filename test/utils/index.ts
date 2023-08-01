@@ -1,7 +1,7 @@
-import { ESLintUtils } from "@typescript-eslint/utils"
 import * as path from "path"
+import { RuleTester } from '@typescript-eslint/rule-tester';
 
-export const ruleTester = new ESLintUtils.RuleTester({
+export const ruleTester = new RuleTester({
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",

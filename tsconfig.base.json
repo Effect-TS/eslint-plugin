@@ -25,7 +25,6 @@
     "allowJs": false,
     "checkJs": false,
     "forceConsistentCasingInFileNames": true,
-    "suppressImplicitAnyIndexErrors": true,
     "stripInternal": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -40,7 +39,17 @@
       "@effect/eslint-plugin": ["./src/index.ts"],
       "@effect/eslint-plugin/test/*": ["./test/*"],
       "@effect/eslint-plugin/examples/*": ["./examples/*"],
-      "@effect/eslint-plugin/*": ["./src/*"]
+      "@effect/eslint-plugin/*": ["./src/*"],
+
+      "@typescript-eslint/utils": [
+        "./node_modules/@typescript-eslint/utils/dist"
+      ],
+      "@typescript-eslint/types": [
+        "./node_modules/@typescript-eslint/types/dist"
+      ],
+      "@typescript-eslint/rule-tester": [
+        "./node_modules/@typescript-eslint/rule-tester/dist"
+      ]
     },
     "plugins": []
   },
