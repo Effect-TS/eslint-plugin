@@ -1,5 +1,11 @@
 # @effect/eslint-plugin
 
+## 0.1.0
+
+### Minor Changes
+
+- [#6](https://github.com/Effect-TS/eslint-plugin/pull/6) [`71f4303`](https://github.com/Effect-TS/eslint-plugin/commit/71f43031d8f406cdd4da983ae74fe49a57ce7b33) Thanks [@tim-smart](https://github.com/tim-smart)! - add dprint integration
+
 ## 0.0.2
 
 ### Patch Changes
