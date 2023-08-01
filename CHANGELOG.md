@@ -1,5 +1,11 @@
 # @effect/eslint-plugin
 
+## 0.1.1
+
+### Patch Changes
+
+- [#9](https://github.com/Effect-TS/eslint-plugin/pull/9) [`c44ac2f`](https://github.com/Effect-TS/eslint-plugin/commit/c44ac2f4fd0939e216406d035ef6c2435d856cf8) Thanks [@tim-smart](https://github.com/tim-smart)! - add plugin to recommended config
+
 ## 0.1.0
 
 ### Minor Changes
