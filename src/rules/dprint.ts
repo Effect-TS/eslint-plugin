@@ -1,12 +1,12 @@
 import { createFromBuffer } from "@dprint/formatter"
 import { getPath } from "@dprint/typescript"
-import { ConfigSchema } from "@effect/eslint-plugin/Dprint"
+import * as RegularExpression from "@effect/eslint-plugin//RegularExpression"
 import type { Addition, Removal, Replacement } from "@effect/eslint-plugin/Diff"
 import { DiffIterator } from "@effect/eslint-plugin/DiffIterator"
-import * as RegularExpression from "@effect/eslint-plugin//RegularExpression"
+import { ConfigSchema } from "@effect/eslint-plugin/Dprint"
+import { createRule } from "@effect/eslint-plugin/utils/eslint"
 import * as Fs from "fs"
 import * as path from "path"
-import { createRule } from "@effect/eslint-plugin/utils/eslint"
 
 const formatter = createFromBuffer(Fs.readFileSync(getPath()))
 
