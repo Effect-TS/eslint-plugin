@@ -1,13 +1,17 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "declaration": true,
-        "downlevelIteration": true,
-        "plugins": [{
-            "name": "@effect/eslint-plugin",
-            "diagnostics": {
-                "1003": "none"
-            }
-        }]
-    }
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "plugins": [
+      {
+        "name": "@effect/eslint-plugin",
+        "diagnostics": {
+          "1003": "none"
+        }
+      }
+    ]
+  },
+
+  "include": ["file.ts"]
 }

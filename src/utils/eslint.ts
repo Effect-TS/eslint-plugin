@@ -1,4 +1,3 @@
-/* eslint-disable @repo-tooling/dprint/dprint */
 import { ESLintUtils } from "@typescript-eslint/utils"
 
 const {getParserServices} = ESLintUtils

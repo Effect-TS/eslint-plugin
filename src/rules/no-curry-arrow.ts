@@ -41,7 +41,7 @@ export default utils.createRule({
   meta: {
     docs: {
       description: "There should be no curry arrow functions, like T.map((_) => log(_)) should be T.map(log) instead",
-      recommended: "warn"
+      recommended: "recommended"
     },
     messages: {
       noCurryArrow: "There should be no curry arrow functions, like T.map((_) => log(_)) should be T.map(log) instead"
