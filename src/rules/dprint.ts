@@ -1,6 +1,6 @@
 import { createFromBuffer } from "@dprint/formatter"
 import { getPath } from "@dprint/typescript"
-import * as RegularExpression from "@effect/eslint-plugin//RegularExpression"
+import * as RegularExpression from "@effect/eslint-plugin/RegularExpression"
 import type { Addition, Removal, Replacement } from "@effect/eslint-plugin/Diff"
 import { DiffIterator } from "@effect/eslint-plugin/DiffIterator"
 import { ConfigSchema } from "@effect/eslint-plugin/Dprint"
