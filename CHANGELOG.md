@@ -1,5 +1,11 @@
 # @effect/eslint-plugin
 
+## 0.1.2
+
+### Patch Changes
+
+- [#11](https://github.com/Effect-TS/eslint-plugin/pull/11) [`79c821e`](https://github.com/Effect-TS/eslint-plugin/commit/79c821e21ed9e490bd730fb71dd0c473171a1859) Thanks [@tim-smart](https://github.com/tim-smart)! - fix double slash in import
+
 ## 0.1.1
 
 ### Patch Changes
