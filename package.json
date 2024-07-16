@@ -55,7 +55,7 @@
   "dependencies": {
     "@dprint/formatter": "^0.2.0",
     "@dprint/typescript": "^0.85.1",
-    "diff": "^5.1.0"
+    "prettier-linter-helpers": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.9",
@@ -67,11 +67,11 @@
     "@rollup/pluginutils": "^5.0.2",
     "@types/benchmark": "^2.1.2",
     "@types/chai": "^4.3.5",
-    "@types/diff": "^5.0.3",
     "@types/glob": "^8.1.0",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
     "@types/prettier": "2",
+    "@types/prettier-linter-helpers": "^1.0.4",
     "@types/rimraf": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
@@ -109,5 +109,6 @@
     "side": [],
     "modules": [],
     "global": []
-  }
+  },
+  "packageManager": "pnpm@9.5.0"
 }

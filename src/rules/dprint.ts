@@ -1,8 +1,8 @@
 import { createFromBuffer } from "@dprint/formatter"
 import { getPath } from "@dprint/typescript"
 import * as RegularExpression from "@effect/eslint-plugin/RegularExpression"
-import type { Addition, Removal, Replacement } from "@effect/eslint-plugin/Diff"
-import { DiffIterator } from "@effect/eslint-plugin/DiffIterator"
+import type { Difference } from "prettier-linter-helpers"
+import { generateDifferences } from "prettier-linter-helpers"
 import { ConfigSchema } from "@effect/eslint-plugin/Dprint"
 import { createRule } from "@effect/eslint-plugin/utils/eslint"
 import * as Fs from "fs"
@@ -37,11 +37,11 @@ function getLineNumberOfFirstCode(s: string): number {
 /**
  * Create the report message of a given difference.
  */
-function createMessage(diff: Addition | Removal | Replacement): Message {
-  switch (diff._tag) {
-    case "Addition": {
-      if (RegularExpression.isWhitespace(diff.newText)) {
-        if (RegularExpression.hasLineBreak(diff.newText)) {
+function createMessage(diff: Difference): Message {
+  switch (diff.operation) {
+    case "insert": {
+      if (RegularExpression.isWhitespace(diff.insertText!)) {
+        if (RegularExpression.hasLineBreak(diff.insertText!)) {
           return {
             messageId: "requireLinebreak",
             data: {},
@@ -55,13 +55,13 @@ function createMessage(diff: Addition | Removal | Replacement): Message {
       return {
         messageId: "requireCode",
         data: {
-          text: JSON.stringify(diff.newText.trim()),
+          text: JSON.stringify(diff.insertText!.trim()),
         },
       }
     }
-    case "Removal": {
-      if (RegularExpression.isWhitespace(diff.oldText)) {
-        if (RegularExpression.hasLineBreak(diff.oldText)) {
+    case "delete": {
+      if (RegularExpression.isWhitespace(diff.deleteText!)) {
+        if (RegularExpression.hasLineBreak(diff.deleteText!)) {
           return {
             messageId: "extraLinebreak",
             data: {},
@@ -75,17 +75,17 @@ function createMessage(diff: Addition | Removal | Replacement): Message {
       return {
         messageId: "extraCode",
         data: {
-          text: JSON.stringify(diff.oldText.trim()),
+          text: JSON.stringify(diff.deleteText!.trim()),
         },
       }
     }
-    case "Replacement": {
+    case "replace": {
       if (
-        RegularExpression.isWhitespace(diff.oldText) &&
-        RegularExpression.isWhitespace(diff.newText)
+        RegularExpression.isWhitespace(diff.deleteText!) &&
+        RegularExpression.isWhitespace(diff.insertText!)
       ) {
-        const oldHasLinebreak = RegularExpression.hasLineBreak(diff.oldText)
-        const newHasLinebreak = RegularExpression.hasLineBreak(diff.newText)
+        const oldHasLinebreak = RegularExpression.hasLineBreak(diff.deleteText!)
+        const newHasLinebreak = RegularExpression.hasLineBreak(diff.insertText!)
         return {
           messageId:
             !oldHasLinebreak && newHasLinebreak
@@ -97,9 +97,9 @@ function createMessage(diff: Addition | Removal | Replacement): Message {
         }
       }
 
-      if (diff.oldText.trim() == diff.newText.trim()) {
-        const oldLine = getLineNumberOfFirstCode(diff.oldText)
-        const newLine = getLineNumberOfFirstCode(diff.newText)
+      if (diff.deleteText!.trim() == diff.insertText!.trim()) {
+        const oldLine = getLineNumberOfFirstCode(diff.deleteText!)
+        const newLine = getLineNumberOfFirstCode(diff.insertText!)
         return {
           messageId:
             newLine > oldLine
@@ -107,15 +107,15 @@ function createMessage(diff: Addition | Removal | Replacement): Message {
               : newLine < oldLine
               ? "moveCodeToPrevLine"
               : "moveCode",
-          data: { text: JSON.stringify(diff.oldText.trim()) },
+          data: { text: JSON.stringify(diff.deleteText!.trim()) },
         }
       }
 
       return {
         messageId: "replaceCode",
         data: {
-          newText: JSON.stringify(diff.newText.trim()),
-          oldText: JSON.stringify(diff.oldText.trim()),
+          newText: JSON.stringify(diff.insertText!.trim()),
+          oldText: JSON.stringify(diff.deleteText!.trim()),
         },
       }
     }
@@ -181,17 +181,15 @@ export const dprint = createRule({
           return
         }
 
-        const diffIterator = new DiffIterator(fileText, formattedText)
+        const diffIterator = generateDifferences(fileText, formattedText)
 
         for (const diff of diffIterator) {
-          if (diff._tag === "NoChange") {
-            continue
-          }
-
-          const range = diff.range
-
+          const range = [
+            diff.offset,
+            diff.offset + (diff.deleteText?.length ?? 0),
+          ] as const
           const loc =
-            diff._tag === "Addition"
+            diff.operation === "insert"
               ? sourceCode.getLocFromIndex(range[0])
               : {
                   start: sourceCode.getLocFromIndex(range[0]),
@@ -205,15 +203,18 @@ export const dprint = createRule({
             messageId,
             data,
             fix(fixer) {
-              switch (diff._tag) {
-                case "Addition": {
-                  return fixer.insertTextAfterRange(range, diff.newText)
+              switch (diff.operation) {
+                case "insert": {
+                  return fixer.insertTextAfterRange(
+                    range,
+                    diff.insertText ?? "",
+                  )
                 }
-                case "Removal": {
+                case "delete": {
                   return fixer.removeRange(range)
                 }
-                case "Replacement": {
-                  return fixer.replaceTextRange(range, diff.newText)
+                case "replace": {
+                  return fixer.replaceTextRange(range, diff.insertText ?? "")
                 }
               }
             },
