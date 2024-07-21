@@ -91,8 +91,8 @@ function createMessage(diff: Difference): Message {
             !oldHasLinebreak && newHasLinebreak
               ? "requireLinebreak"
               : oldHasLinebreak && !newHasLinebreak
-              ? "extraLinebreak"
-              : "replaceWhitespace",
+                ? "extraLinebreak"
+                : "replaceWhitespace",
           data: {},
         }
       }
@@ -105,8 +105,8 @@ function createMessage(diff: Difference): Message {
             newLine > oldLine
               ? "moveCodeToNextLine"
               : newLine < oldLine
-              ? "moveCodeToPrevLine"
-              : "moveCode",
+                ? "moveCodeToPrevLine"
+                : "moveCode",
           data: { text: JSON.stringify(diff.deleteText!.trim()) },
         }
       }
@@ -161,8 +161,8 @@ export const dprint = createRule({
   create: (context, options) => {
     return {
       Program() {
-        const sourceCode = context.getSourceCode()
-        const filePath = context.getFilename()
+        const sourceCode = context.sourceCode
+        const filePath = context.filename
         const fileText = sourceCode.getText()
         const config = options[0]?.config ?? {}
 
@@ -172,7 +172,11 @@ export const dprint = createRule({
 
         let formattedText: string
         try {
-          formattedText = formatter.formatText(filePath, fileText, config)
+          formattedText = formatter.formatText({
+            filePath,
+            fileText,
+            overrideConfig: config,
+          })
         } catch {
           return
         }
