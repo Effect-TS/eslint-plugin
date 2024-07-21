@@ -1,5 +1,15 @@
 # @effect/eslint-plugin
 
+## 0.2.0
+
+### Minor Changes
+
+- [#13](https://github.com/Effect-TS/eslint-plugin/pull/13) [`0843e6e`](https://github.com/Effect-TS/eslint-plugin/commit/0843e6e5b6b7396e5b11b772734c2a3b437452d8) Thanks @IMax153! - upgrade dprint dependencies
+
+### Patch Changes
+
+- [#15](https://github.com/Effect-TS/eslint-plugin/pull/15) [`8c767b7`](https://github.com/Effect-TS/eslint-plugin/commit/8c767b71da3d90a40c20a51e29118e73e10a868b) Thanks @tim-smart! - switch to prettier-linter-helpers for dprint diff
+
 ## 0.1.2
 
 ### Patch Changes
