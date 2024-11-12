@@ -10,8 +10,12 @@ Effect.succeed(true).pipe(Effect.runPromise);
     `import { Effect } from "effect";
 
 Effect.gen(function*(){
-  yield* Effect.succeed(true)
+yield* Effect.succeed(true)
 }).pipe(Effect.runPromise)
+`,
+    `import { Effect } from "effect";
+
+const variable = Effect.succeed(true)
 `,
   ],
   invalid: [
@@ -28,6 +32,14 @@ Effect.succeed(true);
 Effect.gen(function*(){
       Effect.succeed(true)
 }).pipe(Effect.runPromise)
+`,
+      errors: [{ line: 4, messageId: "floating" }],
+    },
+    {
+      code: `import { Effect } from "effect";
+
+const variable = Effect.succeed(true);
+variable;
 `,
       errors: [{ line: 4, messageId: "floating" }],
     },
