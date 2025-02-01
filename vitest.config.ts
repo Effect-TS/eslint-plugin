@@ -10,8 +10,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@effect/eslint-plugin": path.join(__dirname, "src"),
       "@effect/eslint-plugin/test": path.join(__dirname, "test"),
+      "@effect/eslint-plugin": path.join(__dirname, "src"),
     },
   },
   test: {
