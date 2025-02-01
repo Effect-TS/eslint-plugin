@@ -42,29 +42,12 @@ jobs:
         uses: ./.github/actions/setup
       - run: pnpm lint
 
-  test:
-    name: Test (${{ matrix.runtime }} ${{ matrix.shard }})
+  lint:
+    name: Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
-        # runtime: [Node, Bun] # TODO: Re-enable bun test suite after https://github.com/oven-sh/bun/issues/4145 is resolved
-        runtime: [Node]
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
         uses: ./.github/actions/setup
-      - uses: oven-sh/setup-bun@v1
-        if: matrix.runtime == 'Bun'
-        with:
-          bun-version: 1.0.25
-      - name: Test
-        run: pnpm vitest --shard ${{ matrix.shard }}
-        if: matrix.runtime == 'Node'
-        env:
-          NODE_OPTIONS: --max_old_space_size=8192
-      - name: Test
-        run: bun vitest --shard ${{ matrix.shard }}
-        if: matrix.runtime == 'Bun'
+      - run: pnpm vitest
