@@ -42,7 +42,7 @@ jobs:
         uses: ./.github/actions/setup
       - run: pnpm lint
 
-  lint:
+  test:
     name: Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
