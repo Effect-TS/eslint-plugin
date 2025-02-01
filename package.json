@@ -1,31 +1,8 @@
 {
   "name": "@effect/eslint-plugin",
   "version": "0.2.0",
-  "publishConfig": {
-    "access": "public",
-    "directory": "dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Effect-TS/eslint-plugin.git"
-  },
-  "author": "Michael Arnaldi <ma@matechs.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Effect-TS/eslint-plugin/issues"
-  },
-  "homepage": "https://github.com/Effect-TS/eslint-plugin",
-  "description": "A set of ESlint and TypeScript rules to work with Effect",
-  "tags": [
-    "typescript",
-    "algebraic-data-types",
-    "functional-programming"
-  ],
-  "keywords": [
-    "typescript",
-    "algebraic-data-types",
-    "functional-programming"
-  ],
+  "type": "module",
+  "packageManager": "pnpm@9.5.0",
   "scripts": {
     "check": "tsc -b tsconfig.json",
     "test": "vitest",
@@ -37,10 +14,22 @@
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps"
   },
-  "exports": {
-    ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+  "keywords": [
+    "effect",
+    "eslint-plugin"
+  ],
+  "author": "Michael Arnaldi <ma@matechs.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Effect-TS/eslint-plugin.git"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Effect-TS/eslint-plugin/issues"
+  },
+  "homepage": "https://github.com/Effect-TS/eslint-plugin",
+  "description": "A set of ESlint and TypeScript rules to work with Effect",
+  "tags": [],
   "dependencies": {
     "@dprint/formatter": "^0.4.1",
     "@dprint/typescript": "^0.91.3",
@@ -81,20 +70,20 @@
     "typescript-eslint": "^8.21.0",
     "vitest": "^3.0.4"
   },
-  "pnpm": {
-    "patchedDependencies": {
-      "@changesets/get-github-info@0.6.0": "patches/@changesets__get-github-info@0.6.0.patch"
-    },
-    "updateConfig": {
-      "ignoreDependencies": [
-        "eslint"
-      ]
+  "imports": {
+    "#dist/*": {
+      "types": "./dist/dist/dts/*.d.ts",
+      "import": "./dist/dist/esm/*.js"
     }
   },
-  "config": {
-    "side": [],
-    "modules": [],
-    "global": []
-  },
-  "packageManager": "pnpm@9.5.0"
+  "effect": {
+    "generateExports": {
+      "include": [
+        "*.ts",
+        "rules/*.ts",
+        "configs/*.ts",
+        "utils/*.ts"
+      ]
+    }
+  }
 }

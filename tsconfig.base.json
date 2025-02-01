@@ -38,9 +38,7 @@
     "plugins": [{ "name": "@effect/language-service" }],
     "paths": {
       "@effect/eslint-plugin": ["./src/index.js"],
-      "@effect/eslint-plugin/*": ["./src/*.js"],
-      "@effect/eslint-plugin/test": ["./src/index.js"],
-      "@effect/eslint-plugin/test/*": ["./src/*.js"]
+      "@effect/eslint-plugin/*": ["./src/*.js"]
     }
   }
 }
