@@ -1,19 +1,27 @@
-/// <reference types="vitest" />
-import path from "path"
-import { defineConfig } from "vite"
+import * as path from "node:path"
+import { defineConfig } from "vitest/config"
 
 export default defineConfig({
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  plugins: [],
-  test: {
-    include: ["./test/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    exclude: ["./test/utils/**/*.ts", "./test/fixtures/**/*.ts", "./test/**/*.init.ts"],
-    globals: true
+  esbuild: {
+    target: "es2020",
+  },
+  optimizeDeps: {
+    // exclude: ["bun:sqlite"]
   },
   resolve: {
     alias: {
+      "@effect/eslint-plugin": path.join(__dirname, "src"),
       "@effect/eslint-plugin/test": path.join(__dirname, "test"),
-      "@effect/eslint-plugin": path.join(__dirname, "src")
-    }
-  }
+    },
+  },
+  test: {
+    // setupFiles: [path.join(__dirname, "setupTests.ts")],
+    fakeTimers: {
+      toFake: undefined,
+    },
+    sequence: {
+      concurrent: true,
+    },
+    include: ["test/**/*.test.ts"],
+  },
 })

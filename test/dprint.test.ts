@@ -1,5 +1,5 @@
 import { dprint as rule } from "@effect/eslint-plugin/rules/dprint"
-import { ruleTester } from "@effect/eslint-plugin/test/utils"
+import { ruleTester } from "./utils"
 
 ruleTester.run("dprint", rule, {
   valid: [

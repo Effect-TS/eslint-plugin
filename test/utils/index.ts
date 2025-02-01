@@ -1,10 +1,17 @@
 import * as path from "path"
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import * as vitest from "vitest"
+import { RuleTester } from "@typescript-eslint/rule-tester"
+
+RuleTester.afterAll = vitest.afterAll
+RuleTester.it = vitest.it
+RuleTester.itOnly = vitest.it.only
+RuleTester.describe = vitest.describe
 
 export const ruleTester = new RuleTester({
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: "./tsconfig.json",
-    tsconfigRootDir: path.join(__dirname, "..", "fixtures")
-  }
+  languageOptions: {
+    parserOptions: {
+      project: "./tsconfig.json",
+      tsconfigRootDir: path.join(__dirname, "..", "fixtures"),
+    },
+  },
 })

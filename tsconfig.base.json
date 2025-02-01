@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
     "moduleDetection": "force",
     "composite": true,
     "downlevelIteration": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "declaration": true,
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "preserveSymlinks": true,
-    "moduleResolution": "node",
-    "noEmit": false,
-    "lib": ["ES2021"],
+    "moduleResolution": "NodeNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": [],
+    "isolatedModules": true,
     "sourceMap": true,
     "declarationMap": true,
-    "strict": true,
     "noImplicitReturns": false,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
@@ -25,34 +26,21 @@
     "allowJs": false,
     "checkJs": false,
     "forceConsistentCasingInFileNames": true,
-    "stripInternal": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUncheckedIndexedAccess": false,
     "strictNullChecks": true,
     "baseUrl": ".",
-    "target": "ES2021",
-    "module": "ES6",
+    "target": "ES2022",
+    "module": "NodeNext",
     "incremental": true,
     "removeComments": false,
+    "plugins": [{ "name": "@effect/language-service" }],
     "paths": {
-      "@effect/eslint-plugin": ["./src/index.ts"],
-      "@effect/eslint-plugin/test/*": ["./test/*"],
-      "@effect/eslint-plugin/examples/*": ["./examples/*"],
-      "@effect/eslint-plugin/*": ["./src/*"],
-
-      "@typescript-eslint/utils": [
-        "./node_modules/@typescript-eslint/utils/dist"
-      ],
-      "@typescript-eslint/types": [
-        "./node_modules/@typescript-eslint/types/dist"
-      ],
-      "@typescript-eslint/rule-tester": [
-        "./node_modules/@typescript-eslint/rule-tester/dist"
-      ]
-    },
-    "plugins": []
-  },
-  "include": [],
-  "exclude": ["node_modules", "build", "lib", "examples"]
+      "@effect/eslint-plugin": ["./src/index.js"],
+      "@effect/eslint-plugin/*": ["./src/*.js"],
+      "@effect/eslint-plugin/test": ["./src/index.js"],
+      "@effect/eslint-plugin/test/*": ["./src/*.js"]
+    }
+  }
 }
