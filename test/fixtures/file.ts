@@ -1,1 +1,1 @@
-// empty file required by tslint
+// empty file required by eslint

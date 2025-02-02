@@ -1,10 +1,4 @@
-import { dprint } from "@effect/eslint-plugin/rules/dprint"
-import recommended from "./configs/recommended"
+import plugin from "@effect/eslint-plugin/plugin"
+import "@effect/eslint-plugin/configs/recommended"
 
-export const configs = {
-  recommended,
-}
-
-export const rules = {
-  dprint,
-}
+export default plugin

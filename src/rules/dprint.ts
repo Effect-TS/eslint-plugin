@@ -128,7 +128,6 @@ export const dprint = createRule({
     type: "layout",
     docs: {
       description: "Format code with dprint",
-      recommended: "strict",
     },
     fixable: "code",
     messages: {
