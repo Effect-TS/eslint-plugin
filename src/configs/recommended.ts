@@ -1,5 +1,5 @@
 import disableConflictRules from "@effect/eslint-plugin/configs/disable-conflict-rules"
-import plugin from "@effect/eslint-plugin/plugin"
+import * as plugin from "@effect/eslint-plugin/plugin"
 
 const recommended = [
   ...disableConflictRules,
