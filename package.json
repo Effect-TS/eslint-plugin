@@ -14,7 +14,7 @@
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
     "changeset-version": "changeset version",
-    "changeset-publish": "pnpm lint-fix && pnpm build && TEST_DIST= pnpm vitest && changeset publish"
+    "changeset-publish": "pnpm lint:fix && pnpm build && TEST_DIST= pnpm vitest && changeset publish"
   },
   "keywords": [
     "effect",
