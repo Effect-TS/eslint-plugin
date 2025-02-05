@@ -31,7 +31,9 @@
   },
   "homepage": "https://github.com/Effect-TS/eslint-plugin",
   "description": "A set of ESlint and TypeScript rules to work with Effect",
-  "tags": [],
+  "tags": [
+    "effect"
+  ],
   "dependencies": {
     "@dprint/formatter": "^0.4.1",
     "@dprint/typescript": "^0.91.3",
@@ -77,6 +79,10 @@
       "types": "./dist/dist/dts/*.d.ts",
       "import": "./dist/dist/esm/*.js"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
   },
   "effect": {
     "generateExports": {
