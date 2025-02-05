@@ -1,5 +1,13 @@
 # @effect/eslint-plugin
 
+## 0.3.0
+
+### Minor Changes
+
+- [#20](https://github.com/Effect-TS/eslint-plugin/pull/20) [`7ccdc01`](https://github.com/Effect-TS/eslint-plugin/commit/7ccdc013afaab44cc3894abd4cf08ca7bf056a90) Thanks [@mattiamanzati](https://github.com/mattiamanzati)! - Update plugin to eslint 9
+
+- [#24](https://github.com/Effect-TS/eslint-plugin/pull/24) [`2f0baac`](https://github.com/Effect-TS/eslint-plugin/commit/2f0baac14ab2dd310310b5f98267ebd10d8a5512) Thanks [@mattiamanzati](https://github.com/mattiamanzati)! - Rename previous "recommended" config to "dprint"
+
 ## 0.2.0
 
 ### Minor Changes
