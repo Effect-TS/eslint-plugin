@@ -1,7 +1,7 @@
 import disableConflictRules from "@effect/eslint-plugin/configs/disable-conflict-rules"
 import * as plugin from "@effect/eslint-plugin/plugin"
 
-const recommended = [
+export default plugin.configs.dprint = [
   ...disableConflictRules,
   {
     plugins: {
@@ -12,6 +12,3 @@ const recommended = [
     },
   },
 ]
-
-plugin.configs.recommended = recommended
-export default recommended

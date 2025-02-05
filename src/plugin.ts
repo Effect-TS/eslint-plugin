@@ -12,5 +12,5 @@ export const rules = {
 // so in this file we only stub out known configs
 // but they actually get injected in their respective file
 export const configs = {
-  recommended: [] as Array<any>,
+  dprint: [] as Array<any>,
 }
