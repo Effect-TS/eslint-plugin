@@ -1,4 +1,5 @@
 import { dprint } from "@effect/eslint-plugin/rules/dprint"
+import { noImportFromBarrelPackage } from "@effect/eslint-plugin/rules/no-import-from-barrel-package"
 
 export const meta = {
   name: "@effect/eslint-plugin",
@@ -6,6 +7,7 @@ export const meta = {
 
 export const rules = {
   dprint,
+  noImportFromBarrelPackage,
 }
 
 // NOTE: unfortunately plugins needs a self-reference inside configs,

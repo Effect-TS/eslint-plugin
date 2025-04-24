@@ -1,4 +1,3 @@
-import { FlatCompat } from "@eslint/eslintrc"
 import eslint from "@eslint/js"
 import * as tsResolver from "eslint-import-resolver-typescript"
 import importPlugin from "eslint-plugin-import-x"
@@ -7,16 +6,15 @@ import sortDestructureKeys from "eslint-plugin-sort-destructure-keys"
 import * as Path from "node:path"
 import * as Url from "node:url"
 import tseslint from "typescript-eslint"
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 
 const __filename = Url.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
 
 export default tseslint.config(
   {
+    files: ["src/**/*.ts", "test/**/*.ts"],
     ignores: ["**/dist", "**/build", "**/docs", "**/*.md"],
   },
   eslint.configs.recommended,
@@ -111,4 +109,5 @@ export default tseslint.config(
       "@typescript-eslint/unified-signatures": "off",
     },
   },
+  eslintPluginPrettier
 )
