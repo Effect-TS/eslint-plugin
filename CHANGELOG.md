@@ -1,5 +1,11 @@
 # @effect/eslint-plugin
 
+## 0.3.2
+
+### Patch Changes
+
+- [#32](https://github.com/Effect-TS/eslint-plugin/pull/32) [`80a3173`](https://github.com/Effect-TS/eslint-plugin/commit/80a31738d522f93b3cfdbe2adb5b1b6e8e28235b) Thanks [@mattiamanzati](https://github.com/mattiamanzati)! - Fix import type \* as ... in barrel import rules
+
 ## 0.3.1
 
 ### Patch Changes
