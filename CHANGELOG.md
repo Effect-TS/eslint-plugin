@@ -1,5 +1,11 @@
 # @effect/eslint-plugin
 
+## 0.3.1
+
+### Patch Changes
+
+- [#30](https://github.com/Effect-TS/eslint-plugin/pull/30) [`b44ae49`](https://github.com/Effect-TS/eslint-plugin/commit/b44ae49d188a1419aedda722093a6cfeffe77109) Thanks [@mattiamanzati](https://github.com/mattiamanzati)! - Add rule for disallowing direct barrel imports
+
 ## 0.3.0
 
 ### Minor Changes
