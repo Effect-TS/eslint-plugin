@@ -41,6 +41,8 @@ export const noImportFromBarrelPackage = createRule<[Options], MessageIds>({
   create: (context, options) => {
     return {
       ImportDeclaration: node => {
+        // do not check for type imports
+        if (node.importKind === "type") return
         // destruct options
         const [{ packageNames }] = options
         // first we check if the import is from one of the configured modules

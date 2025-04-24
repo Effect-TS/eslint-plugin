@@ -4,15 +4,14 @@ import { ruleTester } from "@effect/eslint-plugin/test/utils/index"
 
 const options: [Options] = [{ packageNames: ["effect"] }]
 
-ruleTester.run("dprint", rule, {
+ruleTester.run("no-import-from-barrel-package", rule, {
   valid: [
     {
       code: `import * as T from "effect/Effect"`,
       options,
     },
     {
-      code: `import { Effect as Eff} from "effect/Effect"
-`,
+      code: `import { Effect as Eff} from "effect/Effect"`,
       options,
     },
     {
@@ -21,6 +20,10 @@ ruleTester.run("dprint", rule, {
     },
     {
       code: `import {type Effect } from "effect";`,
+      options,
+    },
+    {
+      code: `import type { Effect } from "effect"`,
       options,
     },
     {
