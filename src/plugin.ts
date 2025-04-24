@@ -7,7 +7,7 @@ export const meta = {
 
 export const rules = {
   dprint,
-  noImportFromBarrelPackage,
+  "no-import-from-barrel-package": noImportFromBarrelPackage,
 }
 
 // NOTE: unfortunately plugins needs a self-reference inside configs,
